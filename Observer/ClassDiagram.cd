@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CObserver">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Observer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CBlog">
+    <Position X="3.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAABAAEQIAQAABAAAAABAACAAA=</HashCode>
+      <FileName>Blog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CBlogCSDN">
+    <Position X="3.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAEAAAAAAAAAQAAAAAAAAEQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlogCSDN.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CObserverBlog">
+    <Position X="0.5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAQAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAIAAAAAAA=</HashCode>
+      <FileName>ObserverBlog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
