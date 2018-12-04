@@ -8,13 +8,15 @@ class CObserverBlog : public CObserver
 {
 private:
 	string m_name;	// observer name
-	CBlog *m_blog;	// blog list
+	CBlog *m_pBlog;	// blog list
 public:
-	CObserverBlog(string name, CBlog *blog) : m_name(name), m_blog(blog) {}
+	CObserverBlog(string name, CBlog *pBlog)
+		: m_name(name), m_pBlog(pBlog) {}
 	~CObserverBlog() {}
-	void Update()	// get refresh info
+	// get refresh info
+	void Update()
 	{
-		string status = m_blog->GetStatus();
-		cout << m_name << "-------" << status << endl;
+		string status = m_pBlog->GetStatus();
+		cout <<"name : ,"<<m_name << "status : " << status << endl;
 	}
 };

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://www.cnblogs.com/osyun/archive/2011/12/01/2271314.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+<title>c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园</title>
+<meta property="og:description" content="定义：装饰者模式动态的将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。场景：我们购买咖啡的时候，可以要求在其中加入各种调料，例如：蒸奶、豆浆、摩卡或覆盖奶泡，而咖啡店也会根据所">
+<link type="text/css" rel="stylesheet" href="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/bundle-KJC.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/bundle-KJC-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/osyun/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/osyun/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/osyun/wlwmanifest.xml">
+<script async="" src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/analytics.js.下载"></script><script type="text/javascript" src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/encoder.js.下载"></script><script src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+<script type="text/javascript">var currentBlogApp = 'osyun', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+<link rel="preload" href="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/f.txt" as="script"><script type="text/javascript" src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/f.txt"></script><script src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/pubads_impl_275.js.下载" async=""></script></head>
+<body>
+<a name="top"></a>
+
+<table class="Framework" cellspacing="0" cellpadding="0" width="100%">
+	<tbody><tr>
+		<td colspan="3">
+			
+<div id="top">
+<table cellpadding="10" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/osyun/">开源云</a></h1>
+			
+		</td>
+	</tr>
+</tbody></table>
+</div>
+<div id="sub">
+	<div id="sub-right"><div id="blog_stats">
+<div class="BlogStats">posts - 43, comments - 17, trackbacks - 0, articles - 2</div></div></div>
+	
+&nbsp;
+<a id="blog_nav_sitehome" href="https://www.cnblogs.com/">博客园</a>&nbsp;:: 
+<a id="blog_nav_myhome" href="https://www.cnblogs.com/osyun/">首页</a>&nbsp;::
+<a id="blog_nav_newpost" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp;::
+<a id="blog_nav_contact" accesskey="9" rel="nofollow" href="https://msg.cnblogs.com/send/%E5%BC%80%E6%BA%90%E4%BA%91">联系</a>&nbsp;::
+<a id="blog_nav_rss" href="https://www.cnblogs.com/osyun/rss">订阅</a>
+<a id="blog_nav_rss_image" class="XMLLink" href="https://www.cnblogs.com/osyun/rss"><img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/xml.gif" alt="订阅"></a>&nbsp;::
+<a id="blog_nav_admin" rel="nofollow" href="https://i.cnblogs.com/">管理</a>
+
+</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="LeftCell">
+			<div id="leftmenu">
+            	
+		            <div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/11/01&#39;);return false;">&lt;</a></td><td align="center">2018年12月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/01/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalWeekendDay" align="center">1</td></tr><tr><td class="CalWeekendDay" align="center">2</td><td align="center">3</td><td class="CalTodayDay" align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td class="CalWeekendDay" align="center">8</td></tr><tr><td class="CalWeekendDay" align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td class="CalWeekendDay" align="center">15</td></tr><tr><td class="CalWeekendDay" align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td class="CalWeekendDay" align="center">22</td></tr><tr><td class="CalWeekendDay" align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td class="CalWeekendDay" align="center">29</td></tr><tr><td class="CalWeekendDay" align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		            
+<div id="cell">
+<img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/icon-group.jpg" hspace="5" align="left" vspace="2"><h3>公告</h3>
+<div id="news">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/osyun/">开源云</a><br>园龄：<a href="https://home.cnblogs.com/u/osyun/" title="入园时间：2011-06-23">7年5个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/osyun/followers/">20</a><br>关注：<a href="https://home.cnblogs.com/u/osyun/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;174fb991-759d-e011-a53f-842b2b196315&#39;)">+加关注</a></div><script>getFollowStatus('174fb991-759d-e011-a53f-842b2b196315')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+</div>
+
+	            
+	            <div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="cell">
+<img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/icon-group.jpg" hspace="5" align="left" vspace="2">
+<h3 class="catListTitle">搜索</h3>
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div></div><div id="sidebar_shortcut" class="sidebar-block">
+<div id="cell">
+<img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/icon-group.jpg" hspace="5" align="left" vspace="2">
+<h3>常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/osyun/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/osyun/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/osyun/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/osyun/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/osyun/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass(&#39;itemListLink&#39;, &#39;itemListLin_con&#39;);return false;" href="http://www.cnblogs.com/osyun/archive/2011/12/01/2271314.html#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div id="cell">
+<img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/icon-group.jpg" hspace="5" align="left" vspace="2">
+<h3>我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="https://www.cnblogs.com/osyun/tag/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>(12)</li><li><a href="https://www.cnblogs.com/osyun/tag/c%2B%2B/">c++</a>(7)</li><li><a href="https://www.cnblogs.com/osyun/tag/tolua/">tolua</a>(4)</li><li><a href="https://www.cnblogs.com/osyun/tag/linux/">linux</a>(3)</li><li><a href="https://www.cnblogs.com/osyun/tag/php/">php</a>(2)</li><li><a href="https://www.cnblogs.com/osyun/tag/python/">python</a>(1)</li><li><a href="https://www.cnblogs.com/osyun/tag/LVS%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">LVS环境搭建</a>(1)</li><li><a href="https://www.cnblogs.com/osyun/tag/nagios/">nagios</a>(1)</li><li><a href="https://www.cnblogs.com/osyun/tag/convirt/">convirt</a>(1)</li><li><a href="https://www.cnblogs.com/osyun/tag/epoll/">epoll</a>(1)</li><li><a href="https://www.cnblogs.com/osyun/tag/">更多</a></li>
+</ul>
+</div>
+</div></div><div id="sidebar_categories">
+		<div id="cell">
+		<img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/icon-group.jpg" hspace="5" align="left" vspace="2"><h3>随笔档案<span style="font-size:11px;font-weight:normal">(43)</span></h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/osyun/archive/2013/06.html">2013年6月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/osyun/archive/2013/01.html">2013年1月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/osyun/archive/2012/09.html">2012年9月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="https://www.cnblogs.com/osyun/archive/2012/08.html">2012年8月 (3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="https://www.cnblogs.com/osyun/archive/2012/07.html">2012年7月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="https://www.cnblogs.com/osyun/archive/2012/04.html">2012年4月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="https://www.cnblogs.com/osyun/archive/2012/02.html">2012年2月 (6)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="https://www.cnblogs.com/osyun/archive/2012/01.html">2012年1月 (3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="https://www.cnblogs.com/osyun/archive/2011/12.html">2011年12月 (7)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="https://www.cnblogs.com/osyun/archive/2011/11.html">2011年11月 (3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="https://www.cnblogs.com/osyun/archive/2011/10.html">2011年10月 (2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="https://www.cnblogs.com/osyun/archive/2011/09.html">2011年9月 (4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="https://www.cnblogs.com/osyun/archive/2011/08.html">2011年8月 (1)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_13" href="https://www.cnblogs.com/osyun/archive/2011/07.html">2011年7月 (6)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_14" href="https://www.cnblogs.com/osyun/archive/2011/06.html">2011年6月 (1)</a>
+				</li>
+			
+				</ul>
+			</div>
+	</div><div id="recent_comments_wrap">
+    <div id="cell">
+        <img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/icon-group.jpg" hspace="5" align="left" vspace="2">
+        <h3>最新评论</h3>
+        <div class="RecentComment">
+            <div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/osyun/archive/2013/01/07/2849902.html#2938256">1. Re:eclipse中gdb调试输出stl容器的内容</a></li>
+        <li class="recent_comment_body">求方法老报错：Python Exception No module named gdb: warning: Could not load the Python gdb module from `/u.......</li>
+        <li class="recent_comment_author">--析冥</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/osyun/archive/2012/08/31/2664938.html#2934791">2. Re:linux下的c++线程池实现</a></li>
+        <li class="recent_comment_body">void ThreadPool::DeleteThread() 少了一句，icurr_thread_num_ = icurr_thread_num_ - size;否则第二次执行不能扩容，且只有一个线......</li>
+        <li class="recent_comment_author">--默默前进......</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/osyun/archive/2012/08/31/2664938.html#2798890">3. Re:linux下的c++线程池实现</a></li>
+        <li class="recent_comment_body">@开源云引用@vieri122你的意思是搞回调吧。c估计这么搞可以。c++太多的回调就乱拉。不过这个意见挺好的。谢谢哈。我觉得回调比这个cmd好。...</li>
+        <li class="recent_comment_author">--星夜落尘</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/osyun/archive/2011/11/13/2247319.html#2727172">4. Re:c++重载new操作符，防止内存泄露</a></li>
+        <li class="recent_comment_body">作者，你好。我觉得你那个重载delete的函数有些问题~~比如：delete allocmap；这句话，在执行的时候，会调用RemoveTrack函数。明显是有问题的，因为这时你是想释放allocma......</li>
+        <li class="recent_comment_author">--tongailing</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/osyun/archive/2012/01/12/2320698.html#2691707">5. Re:lua和tolua++的安装</a></li>
+        <li class="recent_comment_body">@Jeese照着这里面的改一遍就好了...</li>
+        <li class="recent_comment_author">--lcax200000</li>
+</ul>
+</div>
+        </div>
+    </div>
+</div>
+<div id="topview_posts_wrap">
+    <div id="cell">
+        <img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/icon-group.jpg" hspace="5" align="left" vspace="2">
+        <h3>阅读排行榜</h3>
+        <div class="RecentComment">
+            <div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/osyun/archive/2012/08/31/2664938.html">1. linux下的c++线程池实现(8547)</a></li><li><a href="https://www.cnblogs.com/osyun/archive/2012/01/12/2320698.html">2. lua和tolua++的安装(7722)</a></li><li><a href="https://www.cnblogs.com/osyun/archive/2012/02/01/2334214.html">3. tolua总结（三）(7284)</a></li><li><a href="https://www.cnblogs.com/osyun/archive/2012/08/17/2644018.html">4. c++运用backtrace追踪函数调用的堆栈(4806)</a></li><li><a href="https://www.cnblogs.com/osyun/archive/2011/12/05/2276412.html">5. linux下搭建eclipsec++开发环境(4252)</a></li></ul></div>
+        </div>
+    </div>
+</div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+		</td>
+		<td class="MainCell">
+			<div id="main">
+				
+<div id="post_detail">
+	<div class="post">
+		<div class="posthead">
+			<h2>
+				<a id="cb_post_title_url" class="singleposttitle" href="https://www.cnblogs.com/osyun/archive/2011/12/01/2271314.html">c++设计模式：装饰者模式(Decorator Pattern)</a>
+			</h2>
+ 			Posted on <span id="post-date">2011-12-01 23:18</span> <a href="https://www.cnblogs.com/osyun/">开源云</a> 阅读(<span id="post_view_count">815</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=2271314" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/osyun/archive/2011/12/01/2271314.html#" onclick="AddToWz(2271314);return false;">收藏</a>
+			<script type="text/javascript">var allowComments=true,cb_blogId=91670,cb_entryId=2271314,cb_blogApp=currentBlogApp,cb_blogUserGuid='174fb991-759d-e011-a53f-842b2b196315',cb_entryCreatedDate='2011/12/1 23:18:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+			
+		</div>
+		<div class="postbody"><div id="cnblogs_post_body" class="blogpost-body"><p>定义：</p>
+<p>装饰者模式动态的将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。</p>
+<p>场景：</p>
+<p>我们购买咖啡的时候，可以要求在其中加入各种调料，例如：蒸奶、豆浆、摩卡或覆盖奶泡，而咖啡店也会根据所加入的调料收取不同的费用，所以当我们设计订单系统的时候就需要考虑到这些调料部分啦。顾客的需求不一，如果我们针对每种配方都声明一个类得话，系统的维护将会十分头疼。此时装饰者模式就派上用场啦。我们可以根据顾客的需要动态的扩展顾客定制的咖啡，让其加上不同的调料，最终计算出顾客所需缴纳的费用。它的实现有点类似于递归，在实际使用的时候可以慢慢体会。</p>
+<p>类图：</p>
+<p><img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/2012010916361265.jpg" alt=""></p>
+<p>c++代码如下：</p>
+<p>不使用指针版本：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>#include &lt;iostream&gt;<br>#include &lt;<span style="color: #0000ff;">string</span>&gt;<br><span style="color: #0000ff;">using</span> <span style="color: #0000ff;">namespace</span> std;<br><br><span style="color: #0000ff;">class</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    <span style="color: #0000ff;">virtual</span> ~Beverage() {};<br>    <span style="color: #0000ff;">virtual</span> <span style="color: #0000ff;">string</span> getDescription(); <span style="color: #008000;">//</span><span style="color: #008000;"> 必须是虚函数，否则会造成后期使用时描述显示不正确</span><span style="color: #008000;"><br></span>    <span style="color: #0000ff;">virtual</span> <span style="color: #0000ff;">double</span> cost() = <span style="color: #800080;">0</span>;<br><span style="color: #0000ff;">protected</span>:<br>    <span style="color: #0000ff;">string</span> m_description;<br>};<br><br><span style="color: #0000ff;">class</span> CondimentDecorator:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    <span style="color: #0000ff;">virtual</span> <span style="color: #0000ff;">string</span> getDescription() = <span style="color: #800080;">0</span>;<br>};<br><br><span style="color: #0000ff;">class</span> Espresso:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    Espresso();<br>    <span style="color: #0000ff;">double</span> cost();<br>};<br><br><span style="color: #0000ff;">class</span> HouseBlend:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    HouseBlend();<br>    <span style="color: #0000ff;">double</span> cost();<br>};<br><br><span style="color: #0000ff;">class</span> DarkRoast:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    DarkRoast();<br>    <span style="color: #0000ff;">double</span> cost();<br>};<br><br><span style="color: #0000ff;">class</span> Decaf:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    Decaf();<br>    <span style="color: #0000ff;">double</span> cost();<br>};<br><br><span style="color: #0000ff;">class</span> Mocha:<span style="color: #0000ff;">public</span> CondimentDecorator<br>{<br><span style="color: #0000ff;">public</span>:<br>    Mocha(Beverage* pBeverage);<br>    <span style="color: #0000ff;">string</span> getDescription();<br>    <span style="color: #0000ff;">double</span> cost();<br><span style="color: #0000ff;">protected</span>:<br>    Beverage* m_pBeverage;<br>};<br><br><span style="color: #0000ff;">class</span> Milk:<span style="color: #0000ff;">public</span> CondimentDecorator<br>{<br><span style="color: #0000ff;">public</span>:<br>    Milk(Beverage* pBeverage);<br>    <span style="color: #0000ff;">string</span> getDescription();<br>    <span style="color: #0000ff;">double</span> cost();<br><span style="color: #0000ff;">protected</span>:<br>    Beverage* m_pBeverage;<br>};<br><br><span style="color: #0000ff;">class</span> Soy:<span style="color: #0000ff;">public</span> CondimentDecorator<br>{<br><span style="color: #0000ff;">public</span>:<br>    Soy(Beverage* pBeverage);<br>    <span style="color: #0000ff;">string</span> getDescription();<br>    <span style="color: #0000ff;">double</span> cost();<br><span style="color: #0000ff;">protected</span>:<br>    Beverage* m_pBeverage;<br>};<br><br><span style="color: #0000ff;">class</span> Whip:<span style="color: #0000ff;">public</span> CondimentDecorator<br>{<br><span style="color: #0000ff;">public</span>:<br>    Whip(Beverage* pBeverage);<br>    <span style="color: #0000ff;">string</span> getDescription();<br>    <span style="color: #0000ff;">double</span> cost();<br><span style="color: #0000ff;">protected</span>:<br>    Beverage* m_pBeverage;<br>};<br><br><span style="color: #0000ff;">string</span> Beverage::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_description;<br>}<br><br>Espresso::Espresso()<br>{<br>    m_description = <span style="color: #800000;">"</span><span style="color: #800000;">Espresso</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Espresso::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">1.99</span>;<br>}<br><br>HouseBlend::HouseBlend()<br>{<br>    m_description = <span style="color: #800000;">"</span><span style="color: #800000;">House Blend Coffee</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> HouseBlend::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.89</span>;<br>}<br><br>DarkRoast::DarkRoast()<br>{<br>    m_description = <span style="color: #800000;">"</span><span style="color: #800000;">Dark Roast Coffee</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> DarkRoast::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.99</span>;<br>}<br><br>Decaf::Decaf()<br>{<br>    m_description = <span style="color: #800000;">"</span><span style="color: #800000;">Decaf Coffee</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Decaf::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">1.05</span>;<br>}<br><br>Mocha::Mocha(Beverage* pBeverage)<br>{<br>    m_pBeverage = pBeverage;<br>}<br><br><span style="color: #0000ff;">string</span> Mocha::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_pBeverage-&gt;getDescription() + <span style="color: #800000;">"</span><span style="color: #800000;"> + Mocha</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Mocha::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.20</span> + m_pBeverage-&gt;cost();<br>}<br><br>Milk::Milk(Beverage* pBeverage)<br>{<br>    m_pBeverage = pBeverage;<br>}<br><br><span style="color: #0000ff;">string</span> Milk::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_pBeverage-&gt;getDescription() + <span style="color: #800000;">"</span><span style="color: #800000;"> + Milk</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Milk::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.10</span> + m_pBeverage-&gt;cost();<br>}<br><br>Soy::Soy(Beverage* pBeverage)<br>{<br>    m_pBeverage = pBeverage;<br>}<br><br><span style="color: #0000ff;">string</span> Soy::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_pBeverage-&gt;getDescription() + <span style="color: #800000;">"</span><span style="color: #800000;"> + Soy</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Soy::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.15</span> + m_pBeverage-&gt;cost();<br>}<br><br>Whip::Whip(Beverage* pBeverage)<br>{<br>    m_pBeverage = pBeverage;<br>}<br><br><span style="color: #0000ff;">string</span> Whip::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_pBeverage-&gt;getDescription() + <span style="color: #800000;">"</span><span style="color: #800000;"> + Whip</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Whip::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.10</span> + m_pBeverage-&gt;cost();<br>}<br><br><span style="color: #0000ff;">int</span> main()<br>{<br>    Espresso espresso;<br>    cout &lt;&lt; espresso.getDescription() &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;"> $</span><span style="color: #800000;">"</span> &lt;&lt; espresso.cost() &lt;&lt; endl;<br><br>    DarkRoast darkRoast;<br>    Mocha mocha1(&amp;darkRoast);<br>    Mocha mocha2(&amp;mocha1);<br>    Whip whip1(&amp;mocha2);<br>    cout &lt;&lt; whip1.getDescription() &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;"> $</span><span style="color: #800000;">"</span> &lt;&lt; whip1.cost() &lt;&lt; endl;<br><br>    HouseBlend houseBlend;<br>    Soy soy1(&amp;houseBlend);<br>    Mocha mocha3(&amp;soy1);<br>    Whip whip2(&amp;mocha3);<br>    cout &lt;&lt; whip2.getDescription() &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;"> $</span><span style="color: #800000;">"</span> &lt;&lt; whip2.cost() &lt;&lt; endl;<br><br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span>;<br>}</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>使用指针版本：</p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>#include &lt;iostream&gt;<br>#include &lt;<span style="color: #0000ff;">string</span>&gt;<br><span style="color: #0000ff;">using</span> <span style="color: #0000ff;">namespace</span> std;<br><br><span style="color: #0000ff;">class</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    <span style="color: #0000ff;">virtual</span> ~Beverage() {};<br>    <span style="color: #0000ff;">virtual</span> <span style="color: #0000ff;">string</span> getDescription();<br>    <span style="color: #0000ff;">virtual</span> <span style="color: #0000ff;">double</span> cost() = <span style="color: #800080;">0</span>;<br><span style="color: #0000ff;">protected</span>:<br>    <span style="color: #0000ff;">string</span> m_description;<br>};<br><br><span style="color: #0000ff;">class</span> CondimentDecorator:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    <span style="color: #0000ff;">virtual</span> <span style="color: #0000ff;">string</span> getDescription() = <span style="color: #800080;">0</span>;<br>};<br><br><span style="color: #0000ff;">class</span> Espresso:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    Espresso();<br>    <span style="color: #0000ff;">double</span> cost();<br>};<br><br><span style="color: #0000ff;">class</span> HouseBlend:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    HouseBlend();<br>    <span style="color: #0000ff;">double</span> cost();<br>};<br><br><span style="color: #0000ff;">class</span> DarkRoast:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    DarkRoast();<br>    <span style="color: #0000ff;">double</span> cost();<br>};<br><br><span style="color: #0000ff;">class</span> Decaf:<span style="color: #0000ff;">public</span> Beverage<br>{<br><span style="color: #0000ff;">public</span>:<br>    Decaf();<br>    <span style="color: #0000ff;">double</span> cost();<br>};<br><br><span style="color: #0000ff;">class</span> Mocha:<span style="color: #0000ff;">public</span> CondimentDecorator<br>{<br><span style="color: #0000ff;">public</span>:<br>    Mocha(Beverage* pBeverage);<br>    ~Mocha();<br>    <span style="color: #0000ff;">string</span> getDescription();<br>    <span style="color: #0000ff;">double</span> cost();<br><span style="color: #0000ff;">protected</span>:<br>    Beverage* m_pBeverage;<br>};<br><br><span style="color: #0000ff;">class</span> Milk:<span style="color: #0000ff;">public</span> CondimentDecorator<br>{<br><span style="color: #0000ff;">public</span>:<br>    Milk(Beverage* pBeverage);<br>    ~Milk();<br>    <span style="color: #0000ff;">string</span> getDescription();<br>    <span style="color: #0000ff;">double</span> cost();<br><span style="color: #0000ff;">protected</span>:<br>    Beverage* m_pBeverage;<br>};<br><br><span style="color: #0000ff;">class</span> Soy:<span style="color: #0000ff;">public</span> CondimentDecorator<br>{<br><span style="color: #0000ff;">public</span>:<br>    Soy(Beverage* pBeverage);<br>    ~Soy();<br>    <span style="color: #0000ff;">string</span> getDescription();<br>    <span style="color: #0000ff;">double</span> cost();<br><span style="color: #0000ff;">protected</span>:<br>    Beverage* m_pBeverage;<br>};<br><br><span style="color: #0000ff;">class</span> Whip:<span style="color: #0000ff;">public</span> CondimentDecorator<br>{<br><span style="color: #0000ff;">public</span>:<br>    Whip(Beverage* pBeverage);<br>    ~Whip();<br>    <span style="color: #0000ff;">string</span> getDescription();<br>    <span style="color: #0000ff;">double</span> cost();<br><span style="color: #0000ff;">protected</span>:<br>    Beverage* m_pBeverage;<br>};<br><br><span style="color: #0000ff;">string</span> Beverage::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_description;<br>}<br><br>Espresso::Espresso()<br>{<br>    m_description = <span style="color: #800000;">"</span><span style="color: #800000;">Espresso</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Espresso::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">1.99</span>;<br>}<br><br>HouseBlend::HouseBlend()<br>{<br>    m_description = <span style="color: #800000;">"</span><span style="color: #800000;">House Blend Coffee</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> HouseBlend::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.89</span>;<br>}<br><br>DarkRoast::DarkRoast()<br>{<br>    m_description = <span style="color: #800000;">"</span><span style="color: #800000;">Dark Roast Coffee</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> DarkRoast::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.99</span>;<br>}<br><br>Decaf::Decaf()<br>{<br>    m_description = <span style="color: #800000;">"</span><span style="color: #800000;">Decaf Coffee</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Decaf::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">1.05</span>;<br>}<br><br>Mocha::Mocha(Beverage* pBeverage)<br>{<br>    m_pBeverage = pBeverage;<br>}<br><br>Mocha::~Mocha()<br>{<br>    delete m_pBeverage;<br>}<br><br><span style="color: #0000ff;">string</span> Mocha::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_pBeverage-&gt;getDescription() + <span style="color: #800000;">"</span><span style="color: #800000;"> + Mocha</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Mocha::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.20</span> + m_pBeverage-&gt;cost();<br>}<br><br>Milk::Milk(Beverage* pBeverage)<br>{<br>    m_pBeverage = pBeverage;<br>}<br><br>Milk::~Milk()<br>{<br>    delete m_pBeverage;<br>}<br><br><span style="color: #0000ff;">string</span> Milk::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_pBeverage-&gt;getDescription() + <span style="color: #800000;">"</span><span style="color: #800000;"> + Milk</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Milk::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.10</span> + m_pBeverage-&gt;cost();<br>}<br><br>Soy::Soy(Beverage* pBeverage)<br>{<br>    m_pBeverage = pBeverage;<br>}<br><br>Soy::~Soy()<br>{<br>    delete m_pBeverage;<br>}<br><br><span style="color: #0000ff;">string</span> Soy::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_pBeverage-&gt;getDescription() + <span style="color: #800000;">"</span><span style="color: #800000;"> + Soy</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Soy::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.15</span> + m_pBeverage-&gt;cost();<br>}<br><br>Whip::Whip(Beverage* pBeverage)<br>{<br>    m_pBeverage = pBeverage;<br>}<br><br>Whip::~Whip()<br>{<br>    delete m_pBeverage;<br>}<br><br><span style="color: #0000ff;">string</span> Whip::getDescription()<br>{<br>    <span style="color: #0000ff;">return</span> m_pBeverage-&gt;getDescription() + <span style="color: #800000;">"</span><span style="color: #800000;"> + Whip</span><span style="color: #800000;">"</span>;<br>}<br><br><span style="color: #0000ff;">double</span> Whip::cost()<br>{<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0.10</span> + m_pBeverage-&gt;cost();<br>}<br><span style="color: #0000ff;">int</span> main()<br>{<br>    Beverage* pBeverage = <span style="color: #0000ff;">new</span> Espresso();<br>    cout &lt;&lt; pBeverage-&gt;getDescription() &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;"> $</span><span style="color: #800000;">"</span> &lt;&lt; pBeverage-&gt;cost() &lt;&lt; endl;<br><br>    Beverage* pBeverage2 = <span style="color: #0000ff;">new</span> DarkRoast();<br>    pBeverage2 = <span style="color: #0000ff;">new</span> Mocha(pBeverage2);<br>    pBeverage2 = <span style="color: #0000ff;">new</span> Mocha(pBeverage2);<br>    pBeverage2 = <span style="color: #0000ff;">new</span> Whip(pBeverage2);<br>    cout &lt;&lt; pBeverage2-&gt;getDescription() &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;"> $</span><span style="color: #800000;">"</span> &lt;&lt; pBeverage2-&gt;cost() &lt;&lt; endl;<br><br>    Beverage* pBeverage3 = <span style="color: #0000ff;">new</span> HouseBlend();<br>    pBeverage3 = <span style="color: #0000ff;">new</span> Soy(pBeverage3);<br>    pBeverage3 = <span style="color: #0000ff;">new</span> Mocha(pBeverage3);<br>    pBeverage3 = <span style="color: #0000ff;">new</span> Whip(pBeverage3);<br>    cout &lt;&lt; pBeverage3-&gt;getDescription() &lt;&lt; <span style="color: #800000;">"</span><span style="color: #800000;"> $</span><span style="color: #800000;">"</span> &lt;&lt; pBeverage3-&gt;cost() &lt;&lt; endl;<br>    delete pBeverage;<br>    delete pBeverage2;<br>    delete pBeverage3;<br>    <span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span>;<br>}</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><br><br><br></p>
+<p>运行后结果如下：</p>
+<p>Espresso $1.99<br>Dark Roast Coffee + Mocha + Mocha + Whip $1.49<br>House Blend Coffee + Soy + Mocha + Whip $1.34</p>
+<p>&nbsp;</p>
+<p>参考图书：《Head First 设计模式》<br><br></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="https://www.cnblogs.com/osyun/tag/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2271314,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;174fb991-759d-e011-a53f-842b2b196315&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/osyun/" target="_blank"><img src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/u310379.jpg" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/osyun/">开源云</a><br>
+            <a href="http://home.cnblogs.com/u/osyun/followees">关注 - 0</a><br>
+            <a href="http://home.cnblogs.com/u/osyun/followers">粉丝 - 20</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;174fb991-759d-e011-a53f-842b2b196315&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(2271314,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(2271314,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/osyun/archive/2011/11/18/2254376.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/osyun/archive/2011/11/18/2254376.html" title="发布于2011-11-18 16:58">c++设计模式：观察者模式(Observer Pattern)</a><br><a href="https://www.cnblogs.com/osyun/archive/2011/12/05/2276412.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/osyun/archive/2011/12/05/2276412.html" title="发布于2011-12-05 10:02">linux下搭建eclipsec++开发环境</a><br></div>
+</div>
+
+</div>
+	</div></div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/osyun/archive/2011/12/01/2271314.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/osyun/archive/2011/12/01/2271314.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>相关博文：</b><br>·  <a href="https://www.cnblogs.com/coffeeSS/p/5405787.html" target="_blank" onclick="clickRecomItmem(5405787,&#39;bzMhZ6ODLC2hrOPPWuiPu9QsVGA0y6Ihx84hdMrzebovGlQvqlsCBeVFL6mrjTgHMsd7Zt0lB+pmEREue2K9olw3afmOfGxOOaK13rSGRmn/Givr/ZbxmzZpi0cTuireeRKpzMR2faorJiFqsZSURRyUWvJJ192z8X1RxGYeI0iZ/Fao8RI+JEjXgsZBVje+kBxC&#39;)">设计模式-装饰者模式（Decorator Pattern）</a><br>·  <a href="https://www.cnblogs.com/longshaohang/p/3355977.html" target="_blank" onclick="clickRecomItmem(3355977,&#39;ELvZGD1zh5iLuPenRGX29ejCWH+5QC1MT5K+EONAJAYs+9ngy+wP+mWAjWTl+29CaqURjlY3AptOVMIPZx9v1BndNqekwbbh3jp6jzGUMCcS+bPESv8H793KBUjX4Yuwi4FkuFv3O53exsfbXh71iwW94vYyoMqh2HNf6m/yDuZkJa9R&#39;)">装饰者模式--《Head First DesignPattern》</a><br>·  <a href="https://www.cnblogs.com/May-day/p/8574842.html" target="_blank" onclick="clickRecomItmem(8574842,&#39;nIuEoS/yhN5Dl3ULMlvTQEXJMtE3qjc5+pE6JMDcnxOn3XoMc9LmDSo0TgvtVKxcjszTZMIoIKSkd5ltVNykRmlKT0pgUkRLSRMecJleh1t35VoUq2YTFQefUZAG+pq8XlEIP2PnyZr036gooTF+dhfhsr45ap252pI9Smgtlx94jQ==&#39;)">C#设计模式：装饰者模式（Decorator Pattern）</a><br>·  <a href="https://www.cnblogs.com/xiongzaiqiren/p/5328119.html" target="_blank" onclick="clickRecomItmem(5328119,&#39;HI/dHBIKYWOCCd0c0onF9GfNW94/nf953H46PEdrGhQ/1R++EAdJXZTy1WrBaaBBQoljR9ykR5j0T1T4kKUgpCj+jlNcx/ZjMSUnr43377IBgjCZPj90lhba3rb2CuDpu0VTuW/1kw4uqF8VvHYnzaSHvpizaOwE3K4d29z6t2y4HK0oOOOUdYroYw4DK2PG&#39;)">设计模式（九）装饰者模式（Decorator Pattern）</a><br>·  <a href="https://www.cnblogs.com/maverick-fu/p/4503569.html" target="_blank" onclick="clickRecomItmem(4503569,&#39;KY6PKOAeCmD9Hn7Nh7LQz19YfNjZztivI0gVFnKL1C0rmeWz/QKOddVteDRLO/CzMMEAwspwupRFog5oX7/lCoJSHMJ/Ss0OwB3y9yBqQbHmJuaq4sjHtFlBy4iWhABsE6j8uIB5LnoRRQUuIsW8mww+fwOPn4pGu0LgeSk5caORKlJb&#39;)">装饰者模式</a><br></div></div>
+<script async="async" src="./c++设计模式：装饰者模式(Decorator Pattern) - 开源云 - 博客园_files/gpt.js.下载"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;">
+    <script>
+    if (new Date() >= new Date(2018, 9, 13)) {
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1539008685004-0'); });
+    }
+    </script>
+    </div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/613987/" target="_blank">揭秘Uber新商业模式 优先打造最安全乘车环境</a><br> ·  <a href="https://news.cnblogs.com/n/614017/" target="_blank">LIGO探测到四次新引力波</a><br> ·  <a href="https://news.cnblogs.com/n/614016/" target="_blank">美国启动体细胞基因编辑人体试验</a><br> ·  <a href="https://news.cnblogs.com/n/614015/" target="_blank">夏普回应日本裁员三千临时工 系终止或缩减短期外包</a><br> ·  <a href="https://news.cnblogs.com/n/614014/" target="_blank">Nvidia演示用AI实时渲染虚拟世界</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="FooterCell">
+			
+<p id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="https://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br>
+	Copyright © 开源云
+</p>
+
+		</td>
+	</tr>
+</tbody></table>
+
+
+
+</body></html>

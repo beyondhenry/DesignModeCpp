@@ -5,14 +5,14 @@
 //test case
 int main()
 {
-	CBlog *blog = new CBlogCSDN("BeyondHenry");
-	CObserver *observer = new CObserverBlog("design mode\n", blog);
-	blog->Attach(observer);
-	blog->SetStatus("design mode_15 -> obeserver mode\n");
-	blog->Notify();
+	CBlog* pBlog = new CBlogCSDN("BeyondHenry");
+	CObserver* pObserver = new CObserverBlog("design mode\n", pBlog);
+	pBlog->Attach(pObserver);
+	pBlog->SetStatus("design mode_15 -> obeserver mode\n");
+	pBlog->Notify();
 
-	delete blog;
-	delete observer;
+	delete pBlog;
+	delete pObserver;
 	
 	return 0;
 }
