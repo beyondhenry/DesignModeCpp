@@ -18,15 +18,33 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteComponent.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteDecorator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="decorator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DecoratorValue.cpp">
+    <ClCompile Include="Component.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DecoratorPointer.cpp">
+    <ClCompile Include="ConcreteComponent.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ConcreteDecorator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

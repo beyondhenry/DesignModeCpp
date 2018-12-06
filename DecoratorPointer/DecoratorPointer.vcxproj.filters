@@ -18,13 +18,13 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Compoent.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="ConcreteComponent.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ConcreteDecorator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Compoent.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,9 +38,6 @@
     <ClCompile Include="Decorator.h">
       <Filter>头文件</Filter>
     </ClCompile>
-    <ClCompile Include="Compoent.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="ConcreteComponent.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -48,6 +45,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Decorator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Compoent.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

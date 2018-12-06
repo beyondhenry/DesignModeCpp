@@ -1,8 +1,7 @@
 //#include "pch.h"
-#pragma once
-#include <string>
+#pragma once //必须放开注释，否则会重复包含头文件
 #include <iostream>
-
+#include <string>
 
 using namespace std;
 
