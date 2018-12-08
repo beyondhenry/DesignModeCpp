@@ -161,7 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CurrentConditionsDisplay.cpp" />
-    <ClCompile Include="DisplayElement.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">

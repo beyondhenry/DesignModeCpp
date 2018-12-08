@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Observer.h"
 
-
 Observer::Observer(Subject* pWeatherData)
 {
 	m_pWeatherData = pWeatherData;

@@ -1,9 +1,10 @@
 #pragma once
+
 class DisplayElement
 {
 public:
-	DisplayElement();
-	~DisplayElement();
+	DisplayElement() {};
+	~DisplayElement() {};
 	virtual void display(void) = 0;
 };
 

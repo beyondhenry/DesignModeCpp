@@ -1,7 +1,6 @@
 #pragma once
-//#include "Observer.h";
 
-#define null 0
+const int null = 0;
 class Observer;
 
 class Subject

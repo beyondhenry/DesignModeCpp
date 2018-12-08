@@ -1,5 +1,6 @@
 #include "pch.h"
 #include <stdio.h>
+#include "Subject.h"
 #include "CurrentConditionsDisplay.h"
 
 CurrentConditionsDisplay::CurrentConditionsDisplay(Subject * pWeatherData)

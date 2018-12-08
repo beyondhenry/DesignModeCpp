@@ -1,7 +1,8 @@
 #pragma once
 #include "Observer.h"
-#include "Subject.h"
 #include "DisplayElement.h"
+
+class Subject;
 
 class CurrentConditionsDisplay :
 	public Observer,public DisplayElement

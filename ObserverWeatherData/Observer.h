@@ -1,5 +1,6 @@
 #pragma once
-#include "Subject.h"
+
+class Subject;
 
 class Observer
 {

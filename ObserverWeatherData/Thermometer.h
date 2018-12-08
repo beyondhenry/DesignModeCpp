@@ -1,7 +1,8 @@
 #pragma once
-#include "Subject.h"
 #include "Observer.h"
 #include "DisplayElement.h"
+
+class Subject;
 
 class Thermometer :
 	public Observer, public DisplayElement
@@ -13,7 +14,5 @@ public:
 	void display(void);
 private:
 	float m_temperature;
-
-
 };
 

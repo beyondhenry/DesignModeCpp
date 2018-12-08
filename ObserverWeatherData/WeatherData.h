@@ -1,9 +1,10 @@
 #pragma once
 #include "Subject.h"
-#include "Observer.h"
 #include <list>
 
 using namespace std;
+
+class Observer;
 
 class WeatherData : public Subject
 {

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include <stdio.h>
+#include "Subject.h"
 #include "Thermometer.h"
 
 Thermometer::Thermometer(Subject * pWeatherData):

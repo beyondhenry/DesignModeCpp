@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Observer.h"
 #include "WeatherData.h"
 #include <iterator>
 
