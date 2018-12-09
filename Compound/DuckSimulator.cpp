@@ -5,6 +5,8 @@
 #include "RedheadDuck.h"
 #include "DuckCall.h"
 #include "RubberDuck.h"
+#include "Goose.h"
+#include "GooseAdapter.h"
 
 DuckSimulator::DuckSimulator()
 {
@@ -27,6 +29,7 @@ void DuckSimulator::simulate(void)
 	Quackable* pRedheadDuck = new RedheadDuck();
 	Quackable* pDuckCall = new DuckCall();
 	Quackable* pRubberDuck = new RubberDuck();
+	Quackable* pGoose = new GooseAdapter(new Goose());
 
 	cout << "Duck Simulator" << endl;
 
@@ -34,4 +37,5 @@ void DuckSimulator::simulate(void)
 	simulate(pRedheadDuck);
 	simulate(pDuckCall);
 	simulate(pRubberDuck);
+	simulate(pGoose);
 }

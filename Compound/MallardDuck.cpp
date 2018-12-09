@@ -13,5 +13,5 @@ MallardDuck::~MallardDuck()
 
 void MallardDuck::quack()
 {
-	cout << "Quack" << endl;
+	cout << "Mallard Quack" << endl;
 }

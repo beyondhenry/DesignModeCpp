@@ -153,6 +153,8 @@
   <ItemGroup>
     <ClInclude Include="DuckCall.h" />
     <ClInclude Include="DuckSimulator.h" />
+    <ClInclude Include="Goose.h" />
+    <ClInclude Include="GooseAdapter.h" />
     <ClInclude Include="MallardDuck.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Quackable.h" />
@@ -160,6 +162,8 @@
     <ClInclude Include="RubberDuck.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Goose.cpp" />
+    <ClCompile Include="GooseAdapter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="DuckCall.cpp" />
     <ClCompile Include="DuckSimulator.cpp" />

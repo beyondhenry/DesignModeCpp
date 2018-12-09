@@ -13,5 +13,5 @@ RedheadDuck::~RedheadDuck()
 
 void RedheadDuck::quack(void)
 {
-	cout << "Quack" << endl;
+	cout << "Redhead Quack" << endl;
 }
