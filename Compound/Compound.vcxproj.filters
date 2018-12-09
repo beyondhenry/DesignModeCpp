@@ -45,6 +45,15 @@
     <ClInclude Include="QuackCounter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="AbstractDuckFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DuckFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CountingDuckFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -75,6 +84,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="QuackCounter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractDuckFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DuckFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CountingDuckFactory.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

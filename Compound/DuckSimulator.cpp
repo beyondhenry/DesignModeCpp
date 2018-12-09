@@ -1,3 +1,9 @@
+/*
+	I   :	Quackable Interface
+	II  :	use adapter to add goose
+	III :	counting the quack of duck
+	IV  :	build factory to create duck
+*/
 #include "pch.h"
 #include "Quackable.h"
 #include "DuckSimulator.h"
@@ -8,6 +14,7 @@
 #include "Goose.h"
 #include "GooseAdapter.h"
 #include "QuackCounter.h"
+#include "AbstractDuckFactory.h"
 
 DuckSimulator::DuckSimulator()
 {
@@ -23,14 +30,14 @@ void DuckSimulator::simulate(Quackable* pDuck)
 	pDuck->quack();
 }
 
-void DuckSimulator::simulate(void)
+void DuckSimulator::simulate(/*void*/AbstractDuckFactory* pDuckFactory)
 {
 	// TODO: 在此处添加实现代码.
 	// 装饰者包装鸭子类
-	Quackable* pMallardDuck = new QuackCounter(new MallardDuck());
-	Quackable* pRedheadDuck = new QuackCounter(new RedheadDuck());
-	Quackable* pDuckCall = new QuackCounter(new DuckCall());
-	Quackable* pRubberDuck = new QuackCounter(new RubberDuck());
+	Quackable* pMallardDuck = pDuckFactory->createMallardDuck();
+	Quackable* pRedheadDuck = pDuckFactory->createRedheadDuck();
+	Quackable* pDuckCall = pDuckFactory->createDuckCall();
+	Quackable* pRubberDuck = pDuckFactory->createRubberDuck();
 	//不想计入鹅的叫声因此不去装饰鹅
 	Quackable* pGoose = new GooseAdapter(new Goose());
 
