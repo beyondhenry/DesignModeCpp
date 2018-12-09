@@ -7,6 +7,7 @@
 #include "RubberDuck.h"
 #include "Goose.h"
 #include "GooseAdapter.h"
+#include "QuackCounter.h"
 
 DuckSimulator::DuckSimulator()
 {
@@ -25,10 +26,12 @@ void DuckSimulator::simulate(Quackable* pDuck)
 void DuckSimulator::simulate(void)
 {
 	// TODO: 在此处添加实现代码.
-	Quackable* pMallardDuck = new MallardDuck();
-	Quackable* pRedheadDuck = new RedheadDuck();
-	Quackable* pDuckCall = new DuckCall();
-	Quackable* pRubberDuck = new RubberDuck();
+	// 装饰者包装鸭子类
+	Quackable* pMallardDuck = new QuackCounter(new MallardDuck());
+	Quackable* pRedheadDuck = new QuackCounter(new RedheadDuck());
+	Quackable* pDuckCall = new QuackCounter(new DuckCall());
+	Quackable* pRubberDuck = new QuackCounter(new RubberDuck());
+	//不想计入鹅的叫声因此不去装饰鹅
 	Quackable* pGoose = new GooseAdapter(new Goose());
 
 	cout << "Duck Simulator" << endl;
@@ -38,4 +41,7 @@ void DuckSimulator::simulate(void)
 	simulate(pDuckCall);
 	simulate(pRubberDuck);
 	simulate(pGoose);
+
+	// 获取鸭子叫声的次数
+	cout << "The ducks quacked " << QuackCounter::getQuacks() << " times." << endl;
 }

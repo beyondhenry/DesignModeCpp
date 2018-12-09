@@ -42,6 +42,9 @@
     <ClInclude Include="GooseAdapter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="QuackCounter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -69,6 +72,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GooseAdapter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QuackCounter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
