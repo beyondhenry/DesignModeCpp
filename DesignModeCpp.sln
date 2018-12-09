@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DecoratorValue", "Decorator
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ObserverWeatherData", "ObserverWeatherData\ObserverWeatherData.vcxproj", "{360FB87A-7101-4530-9E39-28770E457E69}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Compound", "Compound\Compound.vcxproj", "{A7A08155-FA81-492D-9F93-905DCEB93212}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -89,6 +91,18 @@ Global
 		{360FB87A-7101-4530-9E39-28770E457E69}.Release|x64.Build.0 = Release|x64
 		{360FB87A-7101-4530-9E39-28770E457E69}.Release|x86.ActiveCfg = Release|Win32
 		{360FB87A-7101-4530-9E39-28770E457E69}.Release|x86.Build.0 = Release|Win32
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Debug|ARM.ActiveCfg = Debug|Win32
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Debug|x64.ActiveCfg = Debug|x64
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Debug|x64.Build.0 = Debug|x64
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Debug|x86.ActiveCfg = Debug|Win32
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Debug|x86.Build.0 = Debug|Win32
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Release|ARM.ActiveCfg = Release|Win32
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Release|ARM64.ActiveCfg = Release|Win32
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Release|x64.ActiveCfg = Release|x64
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Release|x64.Build.0 = Release|x64
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Release|x86.ActiveCfg = Release|Win32
+		{A7A08155-FA81-492D-9F93-905DCEB93212}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
